@@ -12,7 +12,7 @@ export const createuser = async (req, res) => {
         const savedData = await newUser.save();
         //res.status(200).json(savedData);
         res.status(200).json({ message: "User created successfully.", savedData});
-      } catch (error) {
+        } catch (error) {
         let {name, email, address} = req.body;
         if(!name && !email && !address){
             return res.status(400).json({message:"Please prpvide your name email and password"});
@@ -35,7 +35,7 @@ export const createuser = async (req, res) => {
         if(!email){
             return res.status(400).json({message:"please provide your email"});
         }
-        res.status(500).json({errorMessage: error.message});
+            res.status(500).json({errorMessage: error.message});
     }
 };
 
@@ -47,7 +47,7 @@ export const getAllUsers = async (req, res) => {
         return res.status(404).json({message: "User data not found"});
         }
         res.status(200).json(userData);
-    } catch (error) {
+        } catch (error) {
         res.status(500).json({errorMessage: error.message});
     }
 };
@@ -78,7 +78,7 @@ export const updateUser = async(req, res) => {
             new: true,
         });
         res.status(200).json({message: "User updated successfully", updatedata});
-    } catch (error) {
+        } catch (error) {
         res.status(500).json({errorMessage: error.message});
     }
 };
@@ -93,7 +93,7 @@ export const deleteUser = async (req, res) => {
         }
         const deleteId =  await User.findByIdAndDelete(id);
         res.status(200).json({message: "User deleted successfully", deleteId});
-    } catch (error) {
+        } catch (error) {
         res.status(500).json({errorMessage: error.message});
     }
 };
