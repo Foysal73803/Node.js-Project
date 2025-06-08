@@ -5,7 +5,7 @@ export const registerController = async (req, res, next) => {
         const {name, email, password} = req.body;
 
         if(!name && !email && !password){
-          next("Please prpvide your name email and password");
+          next("Please provide your name email and password");
         }
         if(!name){
           next("please name is requierd");
